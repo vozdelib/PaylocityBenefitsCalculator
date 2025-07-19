@@ -1,6 +1,6 @@
-﻿namespace Api.Models;
+﻿namespace Api.Dtos;
 
-public class ApiResponse<T>
+public class ApiResponseDto<T>
 {
     public T? Data { get; set; }
     public bool Success { get; set; } = true;
