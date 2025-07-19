@@ -4,19 +4,11 @@ namespace Api.Services.Calculation
 {
     public class PayrollCalculator : IPayrollCalculator
     {
-        private readonly List<IDeductionStrategy> _deductionStrategies;
+        private readonly IEnumerable<IDeductionStrategy> _deductionStrategies;
 
-        public PayrollCalculator(
-            BaseBenefitCostStrategy baseBenefitCostStrategy,
-            DependentBenefitCostStrategy dependentBenefitCostStrategy,
-            HighEarnerBenefitCostStrategy highEarnerBenefitCostStrategy)
+        public PayrollCalculator(IEnumerable<IDeductionStrategy> deductionStrategies)
         {
-            _deductionStrategies = new List<IDeductionStrategy>
-            {
-                baseBenefitCostStrategy,
-                dependentBenefitCostStrategy,
-                highEarnerBenefitCostStrategy
-            };
+            _deductionStrategies = deductionStrategies;
         }
 
         public decimal CalculateMonthlyDeduction(Employee employee)

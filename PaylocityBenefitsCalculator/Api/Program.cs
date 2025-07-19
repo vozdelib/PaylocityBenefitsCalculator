@@ -17,9 +17,11 @@ builder.Services.AddScoped<IEmployeesStore, InMemoryEmployeesStore>();
 builder.Services.AddScoped<IDependentsStore, InMemoryDependentsStore>();
 builder.Services.AddSingleton<IPayrollCalculator, PayrollCalculator>();
 builder.Services.AddSingleton<IDateTimeProvider, DefaultDateTimeProvider>();
-builder.Services.AddSingleton<BaseBenefitCostStrategy>();
-builder.Services.AddSingleton<DependentBenefitCostStrategy>();
-builder.Services.AddSingleton<HighEarnerBenefitCostStrategy>();
+
+//register strategies
+builder.Services.AddSingleton<IDeductionStrategy, BaseBenefitCostStrategy>();
+builder.Services.AddSingleton<IDeductionStrategy, DependentBenefitCostStrategy>();
+builder.Services.AddSingleton<IDeductionStrategy, HighEarnerBenefitCostStrategy>();
 
 
 // AutoMapper

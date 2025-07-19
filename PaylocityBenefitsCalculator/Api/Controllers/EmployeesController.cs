@@ -1,7 +1,5 @@
 ﻿using Api.Dtos;
-using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
-using Api.Models;
 using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -57,7 +55,7 @@ public class EmployeesController : ControllerBase
 
 
     [SwaggerOperation(Summary = "Get paycheck for an employee")]
-    [HttpGet("{id}/paycheck")]    
+    [HttpGet("{id}/paycheck")]
     public async Task<ActionResult<ApiResponseDto<GetPaycheckDto>>> GetPaycheck(int id)
     {
         var paycheck = await _employeesService.CalculatePaycheckAsync(id);

@@ -33,5 +33,5 @@ Changes I have made in the structure:
 - I have crated "InMemory data store" just moved the example definition of employee list into it and hooked the api to that
 
 Calculations:
-- I'm not sure if I understood it correctly, beacuase based on the rules you've provided, the more dependents (kids) you have, the lower your net pay will be. That is strange concept and I think in real life it works the other way round. But whatever. And maybe I didn't understood correctly.
+I'm not sure if I understood it correctly, beacuase based on the rules you've provided, the more dependents (kids) you have, the lower your net pay will be. That is strange concept and I think in real life it works the other way round. But whatever. And maybe I didn't understood correctly.
 It would make sense if these were tax deductables, but it is not defined like that, so my best bet is that these costs are reducing gross salary... and so then netpay = grosspay - deductions

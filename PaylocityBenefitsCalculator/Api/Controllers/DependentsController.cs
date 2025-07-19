@@ -1,6 +1,5 @@
 ﻿using Api.Dtos;
 using Api.Dtos.Dependent;
-using Api.Dtos.Employee;
 using Api.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -12,7 +11,7 @@ namespace Api.Controllers;
 public class DependentsController : ControllerBase
 {
     private readonly IDependentsService _dependentsService;
-    
+
     public DependentsController(IDependentsService dependentsService)
     {
         _dependentsService = dependentsService;
