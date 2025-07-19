@@ -24,7 +24,7 @@ to show our teams your abilities across the board.
 
 Requirements will be given separately.
 
-# Notes form candidate:
+# Notes from candidate:
 I'm not entirely sure if one of the tasks was to hook it up to a db and use that for persistency or not, but given the requirements I got, it doesn't seem like it. There are no CRUD operations. So my best bet is that it is not the goal of the exercice. 
 Changes I have made in the structure:
 - I have moved the ApiResponseDto from model directory to Dto directory, it is a Dto and not a persistence model, so this is to prevent confusion.
