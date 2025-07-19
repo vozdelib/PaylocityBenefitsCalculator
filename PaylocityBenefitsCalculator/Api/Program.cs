@@ -1,3 +1,7 @@
+using Api.Persistency;
+using Api.Services;
+using Api.Services.Calculation;
+using Api.Services.Mapping;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -5,6 +9,29 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// DI
+builder.Services.AddScoped<IEmployeesService, EmployeesService>();
+builder.Services.AddScoped<IDependentsService, DependentsService>();
+builder.Services.AddScoped<IEmployeesStore, InMemoryEmployeesStore>();
+builder.Services.AddScoped<IDependentsStore, InMemoryDependentsStore>();
+builder.Services.AddSingleton<IPayrollCalculator, PayrollCalculator>();
+builder.Services.AddSingleton<IDateTimeProvider, DefaultDateTimeProvider>();
+
+//register strategies
+builder.Services.AddSingleton<IDeductionStrategy, BaseBenefitCostStrategy>();
+builder.Services.AddSingleton<IDeductionStrategy, DependentBenefitCostStrategy>();
+builder.Services.AddSingleton<IDeductionStrategy, HighEarnerBenefitCostStrategy>();
+
+
+// AutoMapper
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile<DependentMappingProfile>();
+    cfg.AddProfile<EmployeeMappingProfile>();
+});
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -27,7 +54,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configure the HTTP request pipeline.  
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
